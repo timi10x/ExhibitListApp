@@ -1,5 +1,6 @@
 package com.example.seampaytt.core.di
 
+import com.example.seampaytt.core.data.remote.ExhibitRepository
 import com.example.seampaytt.core.domain.repository.IExhibitRepository
 import dagger.Binds
 import dagger.Module
@@ -12,5 +13,5 @@ import javax.inject.Singleton
 abstract class RepositoryModule {
 
     @Binds
-    abstract fun provideRepository(exhibitRepository: IExhibitRepository): IExhibitRepository
+    abstract fun provideRepository(exhibitRepository: ExhibitRepository): IExhibitRepository
 }

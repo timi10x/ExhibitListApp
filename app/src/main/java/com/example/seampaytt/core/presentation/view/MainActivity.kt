@@ -13,6 +13,7 @@ import com.example.seampaytt.databinding.ActivityMainBinding
 import com.example.seampaytt.utils.gone
 import com.example.seampaytt.utils.visible
 import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>(), SwipeRefreshLayout.OnRefreshListener {
@@ -25,13 +26,19 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), SwipeRefreshLayout.OnR
     override fun setup() {
         initView()
         subscribeViewModel()
+        Timber.d("I got to setup")
     }
 
     override fun subscribeViewModel() {
+        Timber.d("I got to vm meth")
         viewModel.exhibit().onLiveDataResult {
             when (it) {
-                is Resource.Loading -> binding.progressBar.visible()
+                is Resource.Loading -> {
+                    Timber.d("I got to loading")
+                    binding.progressBar.visible()
+                }
                 is Resource.Success -> {
+                    Timber.d("I got to success")
                     binding.progressBar.gone()
                     setLog(it.data.toString())
                 }

@@ -6,7 +6,7 @@ import retrofit2.http.Query
 
 interface ExhibitsLoaderService {
 
-    @GET("list")
+    @GET("/list")
     suspend fun getExhibitList() : ExhibitApiResponse
 
 }
