@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.Flow
 interface ExhibitDao {
 
     @Query("SELECT * FROM exhibit")
-    fun getUpdatedExhibit(): Flow<List<ExhibitEntity>>
+    fun getUpdatedExhibit(): Flow<ExhibitEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertWeather(exhibit: ExhibitEntity)
