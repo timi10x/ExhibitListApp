@@ -18,7 +18,7 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        buildConfigField "String", "BASE_URL", '"https://my-json-server.typicode.com/Reyst/exhibit_db/list"'
+        buildConfigField "String", "BASE_URL", '"https://my-json-server.typicode.com/Reyst/exhibit_db/"'
     }
 
     buildTypes {
