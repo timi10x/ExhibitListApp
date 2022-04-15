@@ -9,7 +9,7 @@ object ExhibitMapper {
     fun mapResponseToEntity(exhibit: ExhibitApiResponse): ExhibitEntity {
         return ExhibitEntity(
             title = exhibit.exhibits.map {
-                ExhibitEntity(title = it.title)
+                ExhibitEntity(title = it.title.toString())
             }.toString(),
             images = exhibit.exhibits.map { data ->
                 ImagesEntity(

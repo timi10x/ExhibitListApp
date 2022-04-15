@@ -5,11 +5,12 @@ import com.example.seampaytt.core.domain.usecase.ExhibitUsecase
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
+import dagger.hilt.android.components.ApplicationComponent
 
 @Module
-@InstallIn(SingletonComponent::class)
+@InstallIn(ApplicationComponent::class)
 abstract class AppModule {
     @Binds
-    abstract fun provideWeatherUseCase(exhibitInteractor: ExhibitInteractor): ExhibitUsecase
+    abstract fun provideExhibitUseCase(exhibitInteractor: ExhibitInteractor): ExhibitUsecase
+
 }

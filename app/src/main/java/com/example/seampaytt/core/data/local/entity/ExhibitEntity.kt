@@ -8,7 +8,7 @@ import com.example.seampaytt.core.data.local.RoomConverter
 data class ExhibitEntity(
     @PrimaryKey
     @NonNull
-    @ColumnInfo(name = "title") var title: String? = "",
+    @ColumnInfo(name = "title") var title: String,
     @TypeConverters(RoomConverter::class) var images: List<ImagesEntity>? = null,
 )
 
