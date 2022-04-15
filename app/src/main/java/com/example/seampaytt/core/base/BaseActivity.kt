@@ -1,8 +1,6 @@
 package com.example.seampaytt.core.base
 
 import android.content.Context
-import android.content.Intent
-import android.graphics.Color
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.net.Uri
