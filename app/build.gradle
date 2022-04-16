@@ -69,9 +69,6 @@ dependencies {
     implementation "androidx.activity:activity-ktx:$activityKtxVersion"
     implementation "androidx.fragment:fragment-ktx:$fragmentKtxVersion"
 
-    // Google Services Location
-    implementation "com.google.android.gms:play-services-location:$googleServiceLocationVersion"
-
     // Coroutine
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinCoroutinesVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinCoroutinesVersion"
@@ -88,6 +85,13 @@ dependencies {
 
     // Karumi Dexter
     implementation "com.karumi:dexter:$karumiDexterVersion"
+
+    //shimmer loading
+    implementation "com.facebook.shimmer:shimmer:$shimmer"
+
+    //glide image loading
+    implementation "com.github.bumptech.glide:glide:$glideVersion"
+    kapt "com.github.bumptech.glide:compiler:$glideVersion"
 
 
     // Unit Testing
