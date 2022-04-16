@@ -12,10 +12,6 @@ fun View.gone() {
     visibility = View.GONE
 }
 
-fun View.snack(message: String) {
-    Snackbar.make(this, message, Snackbar.LENGTH_LONG).show()
-}
-
 fun SwipeRefreshLayout.hideLoading() {
     this.isRefreshing = false
 }

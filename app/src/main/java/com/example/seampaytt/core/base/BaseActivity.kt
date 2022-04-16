@@ -47,39 +47,6 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
 
     protected fun setLog(message: String) = Timber.e(message)
 
-    protected fun requestPermissions(
-        permissions: List<String>,
-        action: () -> Unit, actionDeny: () -> Unit
-    ) {
-        Dexter.withContext(this)
-            .withPermissions(permissions)
-            .withListener(getPermissionsListener(action, actionDeny))
-            .check()
-    }
-
-    private fun getPermissionsListener(
-        action: () -> Unit, actionDeny: () -> Unit
-    ): MultiplePermissionsListener {
-        if (!this::permissionListener.isInitialized) {
-            permissionListener = object : MultiplePermissionsListener {
-                override fun onPermissionsChecked(report: MultiplePermissionsReport?) {
-                    report?.let { rpt ->
-                        if (rpt.areAllPermissionsGranted()) action()
-                        else actionDeny()
-                    }
-                }
-
-                override fun onPermissionRationaleShouldBeShown(
-                    p0: MutableList<PermissionRequest>?,
-                    token: PermissionToken?
-                ) {
-                    token?.continuePermissionRequest()
-                }
-            }
-        }
-        return permissionListener
-    }
-
     protected fun isNetworkAvailable(): Boolean {
         val connectivityManager =
             this.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
