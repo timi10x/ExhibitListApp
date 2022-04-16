@@ -22,20 +22,23 @@ class ExhibitRepository @Inject constructor(
 
     override fun getExhibits(exhibitModel: ExhibitModel): Flow<Resource<ExhibitEntity>> =
 
-        object : NetworkBoundResource<ExhibitEntity, ExhibitApiResponse>() {
+        object : NetworkBoundResource<ExhibitEntity, List<Exhibit>>() {
 
-            override suspend fun createCall(): Flow<ApiResponse<ExhibitApiResponse>> = remoteDataSource.getExhibits(exhibitModel)
-
-            override suspend fun saveCallResult(data: ExhibitApiResponse) {
-                val exhibitData = ExhibitMapper.mapResponseToEntity(data)
-                localDataSource.insertExhibit(exhibitData)
-            }
-
-            override fun loadFromDB(): Flow<ExhibitEntity> =
-                localDataSource.getUpdatedExhibits()
+            override fun loadFromDB(): Flow<ExhibitEntity> = localDataSource.getUpdatedExhibits()
 
             override fun shouldFetch(data: ExhibitEntity?): Boolean =
                 data == null || exhibitModel.isSwipeRefreshed || exhibitModel.isNetworkAvailable
 
+            override suspend fun createCall(): Flow<ApiResponse<List<Exhibit>>> =
+                remoteDataSource.getExhibits(exhibitModel)
+
+            override suspend fun saveCallResult(data: List<Exhibit>) {
+                var exhibitData = ExhibitEntity("", listOf())
+                for (i in data.indices) {
+                    exhibitData = ExhibitMapper.mapResponseToEntity(data[i])
+                }
+
+                localDataSource.insertExhibit(exhibitData)
+            }
         }.asFlow()
 }

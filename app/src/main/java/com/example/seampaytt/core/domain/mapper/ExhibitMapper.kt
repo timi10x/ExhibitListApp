@@ -6,15 +6,11 @@ import com.example.seampaytt.core.data.remote.response.Exhibit
 import com.example.seampaytt.core.data.remote.response.ExhibitApiResponse
 
 object ExhibitMapper {
-    fun mapResponseToEntity(exhibit: ExhibitApiResponse): ExhibitEntity {
+    fun mapResponseToEntity(exhibit: Exhibit): ExhibitEntity {
         return ExhibitEntity(
-            title = exhibit.exhibits.map {
-                ExhibitEntity(title = it.title.toString())
-            }.toString(),
-            images = exhibit.exhibits.map { data ->
-                ImagesEntity(
-                    images = data.images.toString()
-                )
+            title = exhibit.title.toString(),
+            images = exhibit.images.map {
+                ImagesEntity(images = it)
             }
         )
     }

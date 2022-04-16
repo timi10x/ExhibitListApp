@@ -8,9 +8,11 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.seampaytt.R
 import com.example.seampaytt.core.base.BaseActivity
 import com.example.seampaytt.core.data.remote.network.Resource
+import com.example.seampaytt.core.domain.model.ExhibitModel
 import com.example.seampaytt.core.presentation.viewModel.MainViewModel
 import com.example.seampaytt.databinding.ActivityMainBinding
 import com.example.seampaytt.utils.gone
+import com.example.seampaytt.utils.hideLoading
 import com.example.seampaytt.utils.visible
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
@@ -26,19 +28,16 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), SwipeRefreshLayout.OnR
     override fun setup() {
         initView()
         subscribeViewModel()
-        Timber.d("I got to setup")
+        getExhibits()
     }
 
     override fun subscribeViewModel() {
-        Timber.d("I got to vm meth")
         viewModel.exhibit().onLiveDataResult {
             when (it) {
                 is Resource.Loading -> {
-                    Timber.d("I got to loading")
                     binding.progressBar.visible()
                 }
                 is Resource.Success -> {
-                    Timber.d("I got to success")
                     binding.progressBar.gone()
                     setLog(it.data.toString())
                 }
@@ -48,12 +47,27 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), SwipeRefreshLayout.OnR
             }
         }
     }
+
     private fun initView() {
         binding.swipeRefresh.setOnRefreshListener(this)
     }
 
+    private fun getExhibits() {
+        viewModel.setExhibit(
+            exhibit = ExhibitModel(
+                isSwipeRefreshed = binding.swipeRefresh.isRefreshing,
+                isNetworkAvailable = isNetworkAvailable()
+            )
+        )
+    }
 
     override fun onRefresh() {
-        TODO("Not yet implemented")
+        getExhibits()
+        binding.swipeRefresh.hideLoading()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        getExhibits()
     }
 }

@@ -4,7 +4,7 @@ import com.squareup.moshi.Json
 
 data class Exhibit(
     @field:Json(name = "title") var title: String? = null,
-    @field:Json(name = "images") var images: ArrayList<String> = arrayListOf()
+    @field:Json(name = "images") var images: List<String> = arrayListOf()
 )
 
 data class ExhibitApiResponse(
