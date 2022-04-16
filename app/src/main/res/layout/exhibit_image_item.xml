@@ -25,7 +25,7 @@
                 android:layout_margin="10dp" />
 
             <TextView
-                android:id="@+id/tvChapterName"
+                android:id="@+id/tvExhibitImageName"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="5dp"
