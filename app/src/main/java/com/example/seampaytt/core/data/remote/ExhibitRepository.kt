@@ -36,7 +36,7 @@ class ExhibitRepository @Inject constructor(
 
 
             override suspend fun createCall(): Flow<ApiResponse<List<Exhibit>>> =
-                remoteDataSource.getExhibits(exhibitModel)
+                remoteDataSource.getExhibits()
 
             override suspend fun saveCallResult(data: List<Exhibit>) {
                 val exhibitData = ExhibitMapper.mapResponseToEntity(data)
