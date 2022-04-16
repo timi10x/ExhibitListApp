@@ -1,10 +1,8 @@
 package com.example.seampaytt.core.domain.mapper
 
-import android.util.Log
 import com.example.seampaytt.core.data.local.entity.ExhibitEntity
 import com.example.seampaytt.core.data.local.entity.ImagesEntity
 import com.example.seampaytt.core.data.remote.response.Exhibit
-import com.example.seampaytt.core.data.remote.response.ExhibitApiResponse
 
 object ExhibitMapper {
     fun mapResponseToEntity(exhibit: List<Exhibit>): List<ExhibitEntity> {

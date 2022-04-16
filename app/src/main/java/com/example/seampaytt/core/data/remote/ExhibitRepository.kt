@@ -6,7 +6,6 @@ import com.example.seampaytt.core.data.remote.network.ApiResponse
 import com.example.seampaytt.core.data.remote.network.NetworkBoundResource
 import com.example.seampaytt.core.data.remote.network.Resource
 import com.example.seampaytt.core.data.remote.response.Exhibit
-import com.example.seampaytt.core.data.remote.response.ExhibitApiResponse
 import com.example.seampaytt.core.domain.mapper.ExhibitMapper
 import com.example.seampaytt.core.domain.model.ExhibitModel
 import com.example.seampaytt.core.domain.repository.IExhibitRepository
