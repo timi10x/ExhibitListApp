@@ -1,4 +1,4 @@
-package com.example.seampaytt.core.presentation
+package com.example.seampaytt.core.presentation.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -15,7 +15,7 @@ import com.example.seampaytt.core.data.local.entity.ImagesEntity
 
 class ExhibitImageAdapter(
     private val context: Context,
-    private val exhibits: ArrayList<ImagesEntity>
+    private val exhibits: List<ImagesEntity>
 ) :
     RecyclerView.Adapter<ExhibitImageAdapter.CustomViewHolder?>() {
 
