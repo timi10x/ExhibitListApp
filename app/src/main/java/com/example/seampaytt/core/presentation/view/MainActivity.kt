@@ -51,6 +51,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), SwipeRefreshLayout.OnR
                     binding.exhibitRv.visible()
                     exhibits = it.data!!
                     setLog(it.data.toString())
+                    setLog(it.data.size.toString())
                     setupRV()
                 }
                 is Resource.Error -> {

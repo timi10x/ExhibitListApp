@@ -4,8 +4,10 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/custom_search_bg.xml" value="0.13" />
+        <entry key="app/src/main/res/drawable/title_shimmer_bg.xml" value="0.13" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.125" />
         <entry key="app/src/main/res/layout/exhibit_image_item.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/shimmer_list.xml" value="0.1852355072463768" />
         <entry key="app/src/main/res/layout/single_exhibit_item.xml" value="0.25" />
       </map>
     </option>

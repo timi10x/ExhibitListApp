@@ -17,7 +17,7 @@
             android:id="@+id/tvExhibitName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/aeonik_regular"
+            android:fontFamily="@font/aeonik_bold"
             tools:text = "iPhone 5"
             android:layout_margin="8dp"
             android:textSize="18sp"
