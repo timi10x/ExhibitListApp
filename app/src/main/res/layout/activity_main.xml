@@ -14,15 +14,51 @@
     android:background="@color/orange"
     tools:context=".core.presentation.view.MainActivity">
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/exhibit_search_container"
+        style="@style/Widget.Design.TextInputLayout"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:background="@drawable/custom_search_bg"
+        android:gravity="center"
+        app:hintEnabled="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/exhibit_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:backgroundTint="@color/blackVariant"
+            android:fontFamily="@font/aeonik_regular"
+            android:paddingStart="16dp"
+            android:hint="@string/search_for_an_exhibit"
+            android:imeOptions="actionDone"
+            android:inputType="text"
+            android:textColorHint="@color/blackVariant"
+            android:textSize="20sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@color/orange2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/exhibit_search_container" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/balances_rv"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider"
         tools:itemCount="3"
         tools:listitem="" />
 
