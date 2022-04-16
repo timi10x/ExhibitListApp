@@ -23,6 +23,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), SwipeRefreshLayout.OnR
     private val viewModel: MainViewModel by viewModels()
     private var exhibits: List<ExhibitEntity> = listOf()
     private var exhibitAdapter: ExhibitsAdapter? = null
+    var isRefreshing = false
 
     override val bindingInflater: (LayoutInflater) -> ActivityMainBinding
         get() = ActivityMainBinding::inflate
@@ -38,16 +39,23 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), SwipeRefreshLayout.OnR
             when (it) {
                 is Resource.Loading -> {
                     binding.progressBar.visible()
+                    if (isRefreshing) {
+                        binding.loadingShimmer.gone()
+                    } else {
+                        binding.loadingShimmer.visible()
+                    }
                 }
                 is Resource.Success -> {
                     binding.progressBar.gone()
+                    binding.loadingShimmer.gone()
+                    binding.exhibitRv.visible()
                     exhibits = it.data!!
                     setLog(it.data.toString())
-                    Timber.d("${it.data}")
                     setupRV()
                 }
                 is Resource.Error -> {
                     binding.progressBar.gone()
+                    binding.loadingShimmer.visible()
                 }
             }
         }
@@ -76,13 +84,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), SwipeRefreshLayout.OnR
         )
     }
 
-    private fun setupUI(exhibits: ExhibitEntity) {
-
-    }
-
     override fun onRefresh() {
         getExhibits()
         binding.swipeRefresh.hideLoading()
+        isRefreshing = true
     }
 
     override fun onResume() {
