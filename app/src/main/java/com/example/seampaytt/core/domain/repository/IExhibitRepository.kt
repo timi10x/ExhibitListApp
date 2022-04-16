@@ -7,6 +7,6 @@ import kotlinx.coroutines.flow.Flow
 
 interface IExhibitRepository {
 
-    fun getExhibits(exhibitModel: ExhibitModel): Flow<Resource<ExhibitEntity>>
+    fun getExhibits(exhibitModel: List<ExhibitModel>): Flow<Resource<List<ExhibitEntity>>>
 
 }

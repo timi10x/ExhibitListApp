@@ -11,9 +11,9 @@ import com.example.seampaytt.core.domain.usecase.ExhibitUsecase
 class MainViewModel @ViewModelInject constructor(private val exhibitUsecase: ExhibitUsecase) :
     ViewModel() {
 
-    private val exhibit = MutableLiveData<ExhibitModel>()
+    private val exhibit = MutableLiveData<List<ExhibitModel>>()
 
-    fun setExhibit(exhibit: ExhibitModel) {
+    fun setExhibit(exhibit: List<ExhibitModel>) {
         this.exhibit.value = exhibit
     }
 

@@ -16,7 +16,7 @@ import javax.inject.Singleton
 @Singleton
 class RemoteDataSource @Inject constructor(private val exhibitsLoaderService: ExhibitsLoaderService) {
 
-    suspend fun getExhibits(exhibit: ExhibitModel) : Flow<ApiResponse<List<Exhibit>>> = flow {
+    suspend fun getExhibits(exhibit: List<ExhibitModel>) : Flow<ApiResponse<List<Exhibit>>> = flow {
         try {
             val response = exhibitsLoaderService.getExhibitList()
             emit(ApiResponse.Success(response))

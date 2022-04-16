@@ -10,7 +10,7 @@ import javax.inject.Inject
 class ExhibitInteractor @Inject constructor(private val repository: IExhibitRepository):
     ExhibitUsecase {
 
-    override fun getExhibits(exhibitModel: ExhibitModel): Flow<Resource<ExhibitEntity>> =
+    override fun getExhibits(exhibitModel: List<ExhibitModel>): Flow<Resource<List<ExhibitEntity>>> =
         repository.getExhibits(exhibitModel)
 
 }

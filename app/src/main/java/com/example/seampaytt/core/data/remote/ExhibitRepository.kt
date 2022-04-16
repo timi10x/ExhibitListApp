@@ -20,25 +20,28 @@ class ExhibitRepository @Inject constructor(
     private val localDataSource: LocalDataSource
 ) : IExhibitRepository {
 
-    override fun getExhibits(exhibitModel: ExhibitModel): Flow<Resource<ExhibitEntity>> =
+    override fun getExhibits(exhibitModel: List<ExhibitModel>): Flow<Resource<List<ExhibitEntity>>> =
 
-        object : NetworkBoundResource<ExhibitEntity, List<Exhibit>>() {
+        object : NetworkBoundResource<List<ExhibitEntity>, List<Exhibit>>() {
+            override fun loadFromDB(): Flow<List<ExhibitEntity>> =
+                localDataSource.getUpdatedExhibits()
 
-            override fun loadFromDB(): Flow<ExhibitEntity> = localDataSource.getUpdatedExhibits()
+            override fun shouldFetch(data: List<ExhibitEntity>?): Boolean {
+                var exhibits= ExhibitModel(isSwipeRefreshed = true, isNetworkAvailable = true)
+                for (i in exhibitModel.indices) {
+                    exhibits = exhibitModel[i]
+                }
+                return data == null || exhibits.isSwipeRefreshed || exhibits.isNetworkAvailable
+            }
 
-            override fun shouldFetch(data: ExhibitEntity?): Boolean =
-                data == null || exhibitModel.isSwipeRefreshed || exhibitModel.isNetworkAvailable
 
             override suspend fun createCall(): Flow<ApiResponse<List<Exhibit>>> =
                 remoteDataSource.getExhibits(exhibitModel)
 
             override suspend fun saveCallResult(data: List<Exhibit>) {
-                var exhibitData = ExhibitEntity("", listOf())
-                for (i in data.indices) {
-                    exhibitData = ExhibitMapper.mapResponseToEntity(data[i])
-                }
-
+                val exhibitData = ExhibitMapper.mapResponseToEntity(data)
                 localDataSource.insertExhibit(exhibitData)
             }
+
         }.asFlow()
 }

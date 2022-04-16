@@ -9,8 +9,8 @@ import javax.inject.Singleton
 @Singleton
 class LocalDataSource @Inject constructor(private val exhibitDao: ExhibitDao) {
 
-    fun getUpdatedExhibits(): Flow<ExhibitEntity> = exhibitDao.getUpdatedExhibit()
+    fun getUpdatedExhibits(): Flow<List<ExhibitEntity>> = exhibitDao.getUpdatedExhibit()
 
-    suspend fun insertExhibit(exhibit: ExhibitEntity) = exhibitDao.insertWeather(exhibit)
+    suspend fun insertExhibit(exhibit: List<ExhibitEntity>) = exhibitDao.insertExhibit(exhibit)
 
 }
