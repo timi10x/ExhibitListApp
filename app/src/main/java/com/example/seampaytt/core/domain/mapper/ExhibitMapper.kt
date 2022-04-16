@@ -12,7 +12,7 @@ object ExhibitMapper {
         for (i in exhibit.indices) {
             itemList.add(exhibit[i])
         }
-        val singleExhibit = itemList.map {
+        val exhibits = itemList.map {
             ExhibitEntity(
                 title = it.title.toString(),
                 images = it.images.map { image ->
@@ -20,9 +20,7 @@ object ExhibitMapper {
                 }
             )
         }
-        Log.d("bigW single exh", "${singleExhibit}")
-        Log.d("bigW itemlist", "${itemList}")
-        return singleExhibit
+        return exhibits
 
     }
 

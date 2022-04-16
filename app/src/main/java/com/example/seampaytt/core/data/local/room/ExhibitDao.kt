@@ -13,6 +13,6 @@ interface ExhibitDao {
     @Query("SELECT * FROM exhibit")
     fun getUpdatedExhibit(): Flow<List<ExhibitEntity>>
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertExhibit(exhibit: List<ExhibitEntity>)
 }
