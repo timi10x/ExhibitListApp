@@ -67,8 +67,8 @@ Libraries used in the application are:
 - [Shimmer](https://facebook.github.io/shimmer-android/) - Shimmer provides an easy way to add a shimmer effect to views in the application.
 - [Glide](https://github.com/bumptech/glide) - Used to load images in real time and also when cached
 - [Moshi](https://github.com/square/moshi) - A modern JSON library for Kotlin and Java..
-- [kotlinx.coroutines](https://github.com/Kotlin/kotlinx.coroutines) - Library Support for coroutine flows. This uses suspend functions to produce and consume values asynchronously.
-- [kotlin Flows](https://developer.android.com/kotlin/flow) - Library Support for coroutines. I used this for asynchronous programming in order
+- [kotlinx.coroutines](https://github.com/Kotlin/kotlinx.coroutines) - I used this for asynchronous programming in order to obtain data from the network as well as the database.
+- [kotlin Flows](https://developer.android.com/kotlin/flow) - Library Support for coroutine flows. This uses suspend functions to produce and consume values asynchronously.
 - [JUnit](https://junit.org/junit4/) - This was used for unit testing the repository, the use cases and the ViewModels.
 - [Mockito](https://developer.android.com/training/testing/unit-testing/local-unit-tests) This is a mocking library for Kotlin.
 - [Hilt](https://dagger.dev/hilt/) - Dependency injection plays a central role in the architectural pattern used.
