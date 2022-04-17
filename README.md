@@ -1,7 +1,7 @@
 
 # 📱 [ExhibitListApp](https://github.com/timmyCoder/ExhibitListApp/blob/master/app-debug.apk) 
 
-This is a Single Activity android application that showcases a list of different types of iPhones from a server db. The application allows user to see a list of iPhones with different models and their respective available images. The application consumes
+This is a Single Activity android application that showcases a list of different types of exhibits from a server db. The application allows user to see a list of exhibits with different models and their respective available images. The application consumes
 the [Reyst exhibit_db API](https://my-json-server.typicode.com/Reyst/exhibit_db/list) and also provides offline accessibility to view the data gotten from the server.
 
 
