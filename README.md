@@ -26,7 +26,7 @@ The Application is split into a three layer architecture:
 #### Data
 
 The data layer handles the business logic and provides data from the
-Reyst exhibit_db API API and a local database leveraging Room. This layer uses the 
+Reyst exhibit_db API and a local database leveraging Room. This layer uses the 
 Repository pattern which serves as data point, where ViewModel knows nothing about source of data. 
 It is up to repository to decide whether local or remote data should be given back to user. 
 This serves well to handle data synchronisation conflicts.
